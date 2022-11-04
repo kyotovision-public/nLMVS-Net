@@ -6,7 +6,7 @@ Please note that this is research software and may contain bugs or other issues 
 
 ```
 @InProceedings{Yamashita_2023_WACV,
-    author    = {Kohei Yamashita and Shohei Nobuhara and Ko Nishino},
+    author    = {Kohei Yamashita and Yuto Enyo and Shohei Nobuhara and Ko Nishino},
     title     = {nLMVS-Net: Deep Non-Lambertian Multi-View Stereo},
     booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
     month     = {Jan},

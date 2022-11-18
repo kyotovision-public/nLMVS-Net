@@ -18,17 +18,17 @@ This dataset is organized as follows.
 .
 ├── nlmvs-real
 │   └── ${illum name}_${mat name}
-│       ├ illumination.exr          - Environment map (captured using mirrored ball, not to be used in our experiments)
-│       └ ${shape name}
-│         ├ illumination.exr        - Environment map (captured using RICOH THETA Z1)
-│         ├ mesh_to_world.npy       - Transformation matrix from coordinate system of mesh files in ./mesh_files to world coordinate system
-│         ├ mesh_aligned.ply        - Ground truth 3D mesh file aligned with captured images (please see below to prepare this file)
-│         ├ view-??.exr             - Linear HDR image
-│         ├ view-??.jpg             - Tone-mapped SDR image (not to be used in our experiments)
-│         ├ view-??_m.png           - Object segmentation mask
-│         ├ view-??_d.npy           - Ground truth depth map
-│         ├ view-??_n.npy           - Ground truth normal map
-│         └ views.txt               - Text file containing intrinsic and extrinsic camera parameters
+│       ├── illumination.exr          - Environment map (captured using mirrored ball, not to be used in our experiments)
+│       └── ${shape name}
+│         ├── illumination.exr        - Environment map (captured using RICOH THETA Z1)
+│         ├── mesh_to_world.npy       - Transformation matrix from coordinate system of mesh files in ./mesh_files to world coordinate system
+│         ├── mesh_aligned.ply        - Ground truth 3D mesh file aligned with captured images (please see below to prepare this file)
+│         ├── view-??.exr             - Linear HDR image
+│         ├── view-??.jpg             - Tone-mapped SDR image (not to be used in our experiments)
+│         ├── view-??_m.png           - Object segmentation mask
+│         ├── view-??_d.npy           - Ground truth depth map
+│         ├── view-??_n.npy           - Ground truth normal map
+│         └── views.txt               - Text file containing intrinsic and extrinsic camera parameters
 ├── mesh_files
 │   └── ${shape name}_processed.ply - Ground truth 3D mesh file (not aligned with captured images)
 ├── create_aligned_meshes.py        - Script to create ground truth 3D mesh models aligned with captured images.

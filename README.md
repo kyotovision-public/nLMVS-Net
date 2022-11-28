@@ -28,6 +28,7 @@ $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 ```
 
 Please prepare the following files.
+* Download ```module.py``` of [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch/tree/e0f2ae3d7cb2dd13807b775f2075682eaa7f1521) and save it to ```./core```.
 * Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
 * Download ```ibrdf.pt``` from [here]() and save it to ```./data```.
 * Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here]() and save them to ```./core/ibrdf/render```.
@@ -99,6 +100,25 @@ Please see [nLMVS-Real.md](./nLMVS-Real.md).
 * Raw panorama images can be found at ```./data/${illum_name}_${mat_name}/${shape_name}/theta_raw```.
 
 Although we do not provide any detailed documentation, there are also python scripts to preprocess the raw images and intermediate data created by the scripts (e.g., uncropped HDR images). ```./README.md``` briefly describes the usage of the python scripts.
+
+## Usage
+### Demo
+
+```
+python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+```
+
+### Training with the nLMVS-Synth dataset
+You can train our shape-from-shading network with the nLMVS-Synth dataset by
+```
+python train_sfs.py --dataset-dir ${PATH_TO_DATASET}
+```
+
+You can train our cost volume filtering network with the nLMVS-Synth dataset by
+```
+python train_nlmvs.py --dataset-dir ${PATH_TO_DATASET}
+```
+
 
 ## Acknowledgement
 This work was in part supported by JSPS 20H05951, 21H04893, JST JPMJCR20G7, JPMJSP2110, and RIKEN GRP. We also thank Shinsaku Hiura for his help in 3D printing.

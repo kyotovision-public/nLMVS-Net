@@ -1,0 +1,10 @@
+.vscode/
+__pycache__/
+tmp
+weights
+
+
+!gitkeep
+
+# Core dump
+core

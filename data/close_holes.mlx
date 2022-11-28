@@ -1,0 +1,9 @@
+<!DOCTYPE FilterScript>
+<FilterScript>
+ <filter name="Close Holes">
+  <Param tooltip="The size is expressed as number of edges composing the hole boundary" name="MaxHoleSize" isxmlparam="0" type="RichInt" description="Max size to be closed " value="50"/>
+  <Param tooltip="Only the holes with at least one of the boundary faces selected are closed" name="Selected" isxmlparam="0" type="RichBool" description="Close holes with selected faces" value="false"/>
+  <Param tooltip="After closing a hole the faces that have been created are left selected. Any previous selection is lost. Useful for example for smoothing the newly created holes." name="NewFaceSelected" isxmlparam="0" type="RichBool" description="Select the newly created faces" value="false"/>
+  <Param tooltip="When closing an holes it tries to prevent the creation of faces that intersect faces adjacent to the boundary of the hole. It is an heuristic, non intersetcting hole filling can be NP-complete." name="SelfIntersection" isxmlparam="0" type="RichBool" description="Prevent creation of selfIntersecting faces" value="true"/>
+ </filter>
+</FilterScript>

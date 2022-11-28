@@ -27,6 +27,12 @@ You can use `nlmvsnet.def` to build your singularity container by
 $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 ```
 
+Please prepare the following files.
+* Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
+* Download ```ibrdf.pt``` from [here]() and save it to ```./data```.
+* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here]() and save them to ```./core/ibrdf/render```.
+* Download pretrained weight files from [here]() and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
+
 ## nLMVS-Synth and nLMVS-Real datasets
 
 ### License

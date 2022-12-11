@@ -144,6 +144,25 @@ python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /d
 
 Estimation Results are saved to ```./run/est_shape_mat```.
 
+### Mesh Reconstruction
+You can recover 3D mesh models from the estimation results by using the following scripts.
+
+```
+python run_recover_mesh_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX}
+```
+
+```
+python run_recover_mesh_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+```
+
+```
+python run_recover_mesh_nlmvss.py ${OBJECT_NAME}
+```
+
+```
+python run_recover_mesh_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
+```
+
 ### Training with the nLMVS-Synth dataset
 You can train our shape-from-shading network with the nLMVS-Synth dataset by
 ```

@@ -220,23 +220,24 @@ def recover_mesh(
         print('created', view_dir+'/mesh_shading_tran.png')
 
         ## render gt mesh
-        subprocess.run([
-            'python', 'eval_utils/render_geometry_mgl.py', 
-            '-i', view_dir+'/intrinsics.npy',
-            '-e', view_dir+'/extrinsics.npy',
-            '-n', view_dir+'/gt_mesh_normal.npy',
-            '-d', view_dir+'/gt_mesh_depth.npy',
-            '-m', view_dir+'/gt_mesh_mask.png',
-            '--up-sampling', '4',
-            out_dir+'/mesh_gt.ply',
-            '128', '128',
-        ])
-        cv2.imwrite(view_dir+'/gt_mesh_shading.png', (255*(np.clip(np.abs(np.load(view_dir+'/gt_mesh_normal.npy')[:,:,2]), 0, 1)**(1/2.2))).astype(np.uint8))
-        print('created', view_dir+'/gt_mesh_shading.png')
+        if not (gt_mesh_file is None):
+            subprocess.run([
+                'python', 'eval_utils/render_geometry_mgl.py', 
+                '-i', view_dir+'/intrinsics.npy',
+                '-e', view_dir+'/extrinsics.npy',
+                '-n', view_dir+'/gt_mesh_normal.npy',
+                '-d', view_dir+'/gt_mesh_depth.npy',
+                '-m', view_dir+'/gt_mesh_mask.png',
+                '--up-sampling', '4',
+                gt_mesh_file,
+                '128', '128',
+            ])
+            cv2.imwrite(view_dir+'/gt_mesh_shading.png', (255*(np.clip(np.abs(np.load(view_dir+'/gt_mesh_normal.npy')[:,:,2]), 0, 1)**(1/2.2))).astype(np.uint8))
+            print('created', view_dir+'/gt_mesh_shading.png')
 
-        img_shading = (255*(np.clip(0.8*np.load(view_dir+'/gt_mesh_normal.npy')[:,:,2], 0, 1)**(1/2.2))).astype(np.uint8)
-        mesh_mask = cv2.imread(view_dir+'/gt_mesh_mask.png', 0)
-        cv2.imwrite(view_dir+'/gt_mesh_shading_tran.png', np.concatenate([
-            img_shading[:,:,None], img_shading[:,:,None], img_shading[:,:,None], mesh_mask[:,:,None]
-        ], axis=-1))
-        print('created', view_dir+'/gt_mesh_shading_tran.png')
+            img_shading = (255*(np.clip(0.8*np.load(view_dir+'/gt_mesh_normal.npy')[:,:,2], 0, 1)**(1/2.2))).astype(np.uint8)
+            mesh_mask = cv2.imread(view_dir+'/gt_mesh_mask.png', 0)
+            cv2.imwrite(view_dir+'/gt_mesh_shading_tran.png', np.concatenate([
+                img_shading[:,:,None], img_shading[:,:,None], img_shading[:,:,None], mesh_mask[:,:,None]
+            ], axis=-1))
+            print('created', view_dir+'/gt_mesh_shading_tran.png')

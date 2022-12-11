@@ -48,6 +48,8 @@ else:
     dataset_dir = args.dataset_path
     exp_name = args.exp_name
 
+    list_illum_name = sorted(os.listdir(dataset_dir))
+
     if not (illum_name in list_illum_name):
         print('illumination name must be one of ', list_illum_name)
         exit()

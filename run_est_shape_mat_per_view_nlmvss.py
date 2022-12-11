@@ -88,22 +88,25 @@ test_dataset = Subset(test_dataset, test_subset_indices)
 
 # compute bbox diagonal of gt geometry
 gt_mesh_files = sorted(glob(os.environ['HOME']+'/data/mvs_eval/assets/shape/*.obj'))
-gt_mesh_file = gt_mesh_files[(object_id // 6) % len(gt_mesh_files)]
+if len(gt_mesh_files) != 6:
+    bbox_diagonal = 0.24
+else:
+    gt_mesh_file = gt_mesh_files[(object_id // 6) % len(gt_mesh_files)]
 
-mesh = trimesh.load(gt_mesh_file)
-verts = np.asarray(mesh.vertices)
+    mesh = trimesh.load(gt_mesh_file)
+    verts = np.asarray(mesh.vertices)
 
-bbox_min = np.min(verts, axis=0)
-bbox_max = np.max(verts, axis=0)
-#bbox_center = 0.5 * (bbox_min + bbox_max)
-bbox_diagonal = np.linalg.norm(bbox_max - bbox_min)
-camera_min_distance = 1.0
-camera_tangent = 1.0 / (2.0 / 1200 * 5000.0)
-scale = 0.5 * bbox_diagonal / camera_tangent / camera_min_distance
+    bbox_min = np.min(verts, axis=0)
+    bbox_max = np.max(verts, axis=0)
+    #bbox_center = 0.5 * (bbox_min + bbox_max)
+    bbox_diagonal = np.linalg.norm(bbox_max - bbox_min)
+    camera_min_distance = 1.0
+    camera_tangent = 1.0 / (2.0 / 1200 * 5000.0)
+    scale = 0.5 * bbox_diagonal / camera_tangent / camera_min_distance
 
-#verts -= bbox_center
-#verts /= scale
-bbox_diagonal /= scale
+    #verts -= bbox_center
+    #verts /= scale
+    bbox_diagonal /= scale
 print('diagonal of gt mesh:', bbox_diagonal)
 
 # compute coarse depth range
@@ -139,8 +142,8 @@ def compute_error(est_brdf, gt_brdf):
 # 
 # visualize gt brdf as cascade spheres if exists
 out_dir = out_dir+'/final_results'
-if not args.wo_sfs:
-    gt_brdf_files = sorted(glob(os.environ['HOME']+'/data/mvs_eval/assets/material/*.binary'))
+gt_brdf_files = sorted(glob(os.environ['HOME']+'/data/mvs_eval/assets/material/*.binary'))
+if (not args.wo_sfs) and (len(gt_brdf_files) == 6):
     gt_brdf_file = gt_brdf_files[(object_id % 6)]
 
     img, mask = visualize_merl_as_sheres(gt_brdf_file)

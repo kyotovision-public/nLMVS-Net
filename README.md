@@ -101,12 +101,48 @@ Please see [nLMVS-Real.md](./nLMVS-Real.md).
 
 Although we do not provide any detailed documentation, there are also python scripts to preprocess the raw images and intermediate data created by the scripts (e.g., uncropped HDR images). ```./README.md``` briefly describes the usage of the python scripts.
 
-## Usage
-### Demo
-
+## Demo
+### Depth, Normal, and Reflectance Estimation
+Usage with the nLMVS-Synth Dataset (Test Set):
 ```
 python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
 ```
+Example:
+```
+python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
+```
+
+Usage with the nLMVS-Real Dataset:
+```
+python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+```
+Example:
+```
+python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
+```
+
+Estimation Results are saved to ```./run/est_shape_mat_per_view```.
+
+### Whole 3D Shape Recovery
+Usage with the nLMVS-Synth Dataset (Test Set):
+```
+python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
+```
+Example:
+```
+python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10
+```
+
+Usage with the nLMVS-Real Dataset:
+```
+python run_est_shape_mat_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
+```
+Example:
+```
+python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /data/nLMVS-Real/nlmvs-real
+```
+
+Estimation Results are saved to ```./run/est_shape_mat```.
 
 ### Training with the nLMVS-Synth dataset
 You can train our shape-from-shading network with the nLMVS-Synth dataset by

@@ -1,0 +1,15 @@
+<!DOCTYPE FilterScript>
+<FilterScript>
+ <filter name="Surface Reconstruction: Ball Pivoting">
+  <Param max="0.256429" tooltip="The radius of the ball pivoting (rolling) over the set of points. Gaps that are larger than the ball radius will not be filled; similarly the small pits that are smaller than the ball radius will be filled." type="RichAbsPerc" value="0" min="0" description="Pivoting Ball radius (0 autoguess)" name="BallRadius" isxmlparam="0"/>
+  <Param tooltip="To avoid the creation of too small triangles, if a vertex is found too close to a previous one, it is clustered/merged with it." type="RichFloat" value="20" description="Clustering radius (% of ball radius)" name="Clustering" isxmlparam="0"/>
+  <Param tooltip="If we encounter a crease angle that is too large we should stop the ball rolling" type="RichFloat" value="90" description="Angle Threshold (degrees)" name="CreaseThr" isxmlparam="0"/>
+  <Param tooltip="if true all the initial faces of the mesh are deleted and the whole surface is rebuilt from scratch. Otherwise the current faces are used as a starting point. Useful if you run the algorithm multiple times with an increasing ball radius." type="RichBool" value="false" description="Delete initial set of faces" name="DeleteFaces" isxmlparam="0"/>
+ </filter>
+ <filter name="Close Holes">
+  <Param tooltip="The size is expressed as number of edges composing the hole boundary" type="RichInt" value="30" description="Max size to be closed " name="MaxHoleSize" isxmlparam="0"/>
+  <Param tooltip="Only the holes with at least one of the boundary faces selected are closed" type="RichBool" value="false" description="Close holes with selected faces" name="Selected" isxmlparam="0"/>
+  <Param tooltip="After closing a hole the faces that have been created are left selected. Any previous selection is lost. Useful for example for smoothing the newly created holes." type="RichBool" value="true" description="Select the newly created faces" name="NewFaceSelected" isxmlparam="0"/>
+  <Param tooltip="When closing an holes it tries to prevent the creation of faces that intersect faces adjacent to the boundary of the hole. It is an heuristic, non intersetcting hole filling can be NP-complete." type="RichBool" value="true" description="Prevent creation of selfIntersecting faces" name="SelfIntersection" isxmlparam="0"/>
+ </filter>
+</FilterScript>

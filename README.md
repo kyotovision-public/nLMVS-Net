@@ -16,11 +16,18 @@ Please note that this is research software and may contain bugs or other issues 
 
 ## Prerequisites
 
-We tested our code with Python 3.? on Ubuntu 20.04 LTS. Our code depends on the following modules.
+We tested our code with Python 3.7.6 on Ubuntu 20.04 LTS. Our code depends on the following modules.
 
 * numpy
 * opencv-python
-* ...
+* pytorch
+* numba
+* tqdm
+* meshlabserver
+* moderngl
+* matplotlib
+* open3d
+* trimesh
 
 You can use `nlmvsnet.def` to build your singularity container by
 ```
@@ -30,9 +37,9 @@ $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 Please prepare the following files.
 * Download ```module.py``` of [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch/tree/e0f2ae3d7cb2dd13807b775f2075682eaa7f1521) and save it to ```./core```.
 * Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
-* Download ```ibrdf.pt``` from [here]() and save it to ```./data```.
-* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here]() and save them to ```./core/ibrdf/render```.
-* Download pretrained weight files from [here]() and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
+* Download ```ibrdf.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save it to ```./data```.
+* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./core/ibrdf/render```.
+* Download pretrained weight files from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
 
 ## nLMVS-Synth and nLMVS-Real datasets
 

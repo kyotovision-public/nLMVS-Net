@@ -16,11 +16,18 @@ Please note that this is research software and may contain bugs or other issues 
 
 ## Prerequisites
 
-We tested our code with Python 3.? on Ubuntu 20.04 LTS. Our code depends on the following modules.
+We tested our code with Python 3.7.6 on Ubuntu 20.04 LTS. Our code depends on the following modules.
 
 * numpy
 * opencv-python
-* ...
+* pytorch
+* numba
+* tqdm
+* meshlabserver
+* moderngl
+* matplotlib
+* open3d
+* trimesh
 
 You can use `nlmvsnet.def` to build your singularity container by
 ```
@@ -30,9 +37,9 @@ $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 Please prepare the following files.
 * Download ```module.py``` of [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch/tree/e0f2ae3d7cb2dd13807b775f2075682eaa7f1521) and save it to ```./core```.
 * Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
-* Download ```ibrdf.pt``` from [here]() and save it to ```./data```.
-* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here]() and save them to ```./core/ibrdf/render```.
-* Download pretrained weight files from [here]() and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
+* Download ```ibrdf.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save it to ```./data```.
+* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./core/ibrdf/render```.
+* Download pretrained weight files from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
 
 ## nLMVS-Synth and nLMVS-Real datasets
 
@@ -103,46 +110,34 @@ Although we do not provide any detailed documentation, there are also python scr
 
 ## Demo
 ### Depth, Normal, and Reflectance Estimation
-Usage with the nLMVS-Synth Dataset (Test Set):
+You can recover depths, surface normals, and reflectance from images in the nLMVS-Synth dataset by runninng ```run_est_shape_mat_per_view_nlmvss.py```.
 ```
-python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
+Usage: python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
 ```
 
-Usage with the nLMVS-Real Dataset:
+You can recover depths, surface normals, and reflectance from images in the nLMVS-Real Dataset by runninng ```run_est_shape_mat_per_view_nlmvsr.py```.
 ```
-python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
+Usage: python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
 ```
 
-Estimation Results are saved to ```./run/est_shape_mat_per_view```.
+Estimation results are saved to ```./run/est_shape_mat_per_view```.
 
-### Whole 3D Shape Recovery
-Usage with the nLMVS-Synth Dataset (Test Set):
+### Whole 3D Shape Recovery 
+You can recover whole object 3D shape and reflectance from images in the nLMVS-Synth dataset by running ```run_est_shape_mat_nlmvss.py```.
 ```
-python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
-```
-Example:
-```
-python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10
+Usage: python run_est_shape_mat_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
+Example: python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10
 ```
 
-Usage with the nLMVS-Real Dataset:
+For reconstruction from the nLMVS-Real dataset, you can use ```run_est_shape_mat_nlmvsr.py```.
 ```
-python run_est_shape_mat_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /data/nLMVS-Real/nlmvs-real
+Usage: python run_est_shape_mat_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /data/nLMVS-Real/nlmvs-real
 ```
 
-Estimation Results are saved to ```./run/est_shape_mat```.
+Estimation results are saved to ```./run/est_shape_mat```.
 
 ### Mesh Reconstruction
 You can recover 3D mesh models from the estimation results by using the following scripts.

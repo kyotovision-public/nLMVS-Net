@@ -1,0 +1,67 @@
+#########################################################################
+## This is for the following environment.
+## - Ubuntu  20.04
+## - CUDA    11.1.1 (cuDNN 8.0.5)
+## - Python  3.7.6
+## - PyTorch 1.8.1+cu111 (torchvision 0.9.1+cu111)
+## - OpenCV  4.2.0.34(contrib)
+##
+## You can change the versions by editing the script below, but you need
+## to make the
+##
+#########################################################################
+
+Bootstrap: docker
+From: ubuntu:20.04
+
+
+%post
+    export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+    export PYENV_ROOT=/opt/pyenv
+    export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+    export PYTHONNOUSERSITE=1
+
+    #### Some packages for cuda, pyenv, and opencv installation
+    apt-get -y update
+    apt-get -y install gcc curl wget git zlib1g-dev libbz2-dev libssl-dev libreadline-dev libjpeg-dev gnupg libgl1-mesa-dev libglib2.0-0 libffi-dev liblzma-dev
+    
+    #### MeshlabServer
+    apt-get -y install meshlab
+
+    mkdir -p /workspace
+    cd /workspace
+
+
+    #### CUDA library (see https://developer.nvidia.com/cuda-downloads)
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+    mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+    wget https://developer.download.nvidia.com/compute/cuda/11.1.1/local_installers/cuda-repo-ubuntu2004-11-1-local_11.1.1-455.32.00-1_amd64.deb
+    dpkg -i cuda-repo-ubuntu2004-11-1-local_11.1.1-455.32.00-1_amd64.deb
+    apt-key add /var/cuda-repo-ubuntu2004-11-1-local/7fa2af80.pub
+    apt-get update
+    apt-get -y install cuda
+
+
+    #### cuDNN (see https://developer.download.nvidia.com/compute/redist/cudnn/)
+    wget https://developer.download.nvidia.com/compute/redist/cudnn/v8.0.5/Ubuntu20_04-x64/libcudnn8_8.0.5.39-1+cuda11.1_amd64.deb
+    dpkg -i libcudnn8_8.0.5.39-1+cuda11.1_amd64.deb
+    wget https://developer.download.nvidia.com/compute/redist/cudnn/v8.0.5/Ubuntu20_04-x64/libcudnn8-dev_8.0.5.39-1+cuda11.1_amd64.deb
+    dpkg -i libcudnn8-dev_8.0.5.39-1+cuda11.1_amd64.deb
+
+
+    #### Python by pyenv
+    curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+    pyenv install 3.7.6
+    pyenv global 3.7.6
+    eval "$(pyenv init -)"
+
+    python3 -m pip install --upgrade pip==21.3.1
+    python3 -m pip install numpy==1.18.2 opencv-contrib-python==4.2.0.34 jupyterlab==3.2.5 notebook==6.0.3 ipywidgets==7.6.5 tqdm==4.54.0 moderngl==5.6.4 open3d==0.14.1 matplotlib==3.2.1 numba==0.53.1 tensorflow==2.2.0 tensorboardX==2.1
+    python3 -m pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+    python3 -m pip install moderngl==5.6.4 imageio==2.16.1 trimesh==3.10.2 rtree==1.0.0 lpips==0.1.4 imageio-ffmpeg==0.4.5
+
+
+%environment
+    export PYENV_ROOT=/opt/pyenv
+    export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+    export PYTHONNOUSERSITE=1

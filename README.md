@@ -110,46 +110,34 @@ Although we do not provide any detailed documentation, there are also python scr
 
 ## Demo
 ### Depth, Normal, and Reflectance Estimation
-Usage with the nLMVS-Synth Dataset (Test Set):
+You can recover depths, surface normals, and reflectance from images in the nLMVS-Synth dataset by runninng ```run_est_shape_mat_per_view_nlmvss.py```.
 ```
-python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
+Usage: python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
 ```
 
-Usage with the nLMVS-Real Dataset:
+You can recover depths, surface normals, and reflectance from images in the nLMVS-Real Dataset by runninng ```run_est_shape_mat_per_view_nlmvsr.py```.
 ```
-python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
+Usage: python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
 ```
 
-Estimation Results are saved to ```./run/est_shape_mat_per_view```.
+Estimation results are saved to ```./run/est_shape_mat_per_view```.
 
-### Whole 3D Shape Recovery
-Usage with the nLMVS-Synth Dataset (Test Set):
+### Whole 3D Shape Recovery 
+You can recover whole object 3D shape and reflectance from images in the nLMVS-Synth dataset by running ```run_est_shape_mat_nlmvss.py```.
 ```
-python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
-```
-Example:
-```
-python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10
+Usage: python run_est_shape_mat_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
+Example: python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10
 ```
 
-Usage with the nLMVS-Real Dataset:
+For reconstruction from the nLMVS-Real dataset, you can use ```run_est_shape_mat_nlmvsr.py```.
 ```
-python run_est_shape_mat_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
-```
-Example:
-```
-python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /data/nLMVS-Real/nlmvs-real
+Usage: python run_est_shape_mat_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
+Example: python run_est_shape_mat_nlmvsr.py laboratory_bright-red bunny --dataset-path /data/nLMVS-Real/nlmvs-real
 ```
 
-Estimation Results are saved to ```./run/est_shape_mat```.
+Estimation results are saved to ```./run/est_shape_mat```.
 
 ### Mesh Reconstruction
 You can recover 3D mesh models from the estimation results by using the following scripts.

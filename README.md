@@ -37,9 +37,9 @@ $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 Please prepare the following files.
 * Download ```module.py``` of [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch/tree/e0f2ae3d7cb2dd13807b775f2075682eaa7f1521) and save it to ```./core```.
 * Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
-* Download ```ibrdf.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save it to ```./data```.
-* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./core/ibrdf/render```.
-* Download pretrained weight files from [here](https://drive.google.com/drive/folders/1tDd4-gqQNXTQp9psdsWCP0QzzLf3JqBi?usp=share_link) and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
+* Download ```ibrdf.pt``` from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save it to ```./data```.
+* Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save them to ```./core/ibrdf/render```.
+* Download pretrained weight files from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
 
 ## nLMVS-Synth and nLMVS-Real datasets
 

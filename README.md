@@ -53,28 +53,28 @@ We provide the raw and also preprocessed data.  As the raw data is so large, we 
 
 * nLMVS-Synth
   * Training Set
-    * [Training Data for Shape-from-Shading Network (7.1GB)](nLMVS-Synth-Train-SfS.zip)
-    * [Training Data for Cost Volume Filtering Network (23.4GB)](nLMVS-Synth-Train-CV.zip)
-  * [Test set (??.?GB)](nLMVS-Synth-Eval.zip)
+    * [Training Data for Shape-from-Shading Network (6.6GB)](https://drive.google.com/uc?id=1E9Uk3RTYPnwsKNjkLsO_XoPzwpCsRWzN)
+    * [Training Data for Cost Volume Filtering Network (22GB)](https://drive.google.com/uc?id=1hzTYRSgP5mqq6s3rXDpoxkBUgX1viAf3)
+  * [Test set (39GB)](https://drive.google.com/uc?id=12Mkcbe2JuJTrJRfKbXhg_buuQvbHM6FW)
 * nLMVS-Real
-  * [Preprocessed data (??.?GB)](nLMVS-Real.zip)
+  * [Preprocessed data (48GB)](https://drive.google.com/uc?id=19uYwiQLaSKAA6XGnnmsHZ9if4JOAFmIk)
   * Raw data
-    * [court_duralumin & court_blue-metallic (??.?GB)](20211104.zip)
-    * [court_white-primer & entrance_bright-red (??.?GB)](20211106.zip)
-    * [buildings_bright-red & buildings_duralumin (??.?GB)](20211107.zip)
-    * [laboratory_bright-red (??.?GB)](20211108.zip)
-    * [court_bright-red (??.?GB)](20211202.zip)
-    * [buildings_white-primer & buildings_blue-metallic (??.?GB)](20211205.zip)
-    * [laboratory_duralumin (??.?GB)](20211207.zip)
-    * [laboratory_blue-metallic (??.?GB)](20211208.zip)
-    * [entrance_duralumin & entrance_blue-metallic (??.?GB)](20211211.zip)
-    * [entrance_white-primer (??.?GB)](20211212.zip)
-    * [laboratory_white-primer (??.?GB)](20211213.zip)
-    * [manor_bright-red & manor_duralumin (??.?GB)](20211220.zip)
-    * [manor_blue-metallic & manor_white-primer (??.?GB)](20211222.zip)
-    * [chapel_bright-red & chapel_duralumin (??.?GB)](20220111.zip)
-    * [chapel_white-primer (??.?GB)](20220117.zip)
-    * [chapel_blue-metallic (??.?GB)](20220131.zip)
+    * [court_duralumin & court_blue-metallic (159GB)](https://drive.google.com/uc?id=119IKcnoxvppk6wngybhH8KjCSNX_xjQg)
+    * [court_white-primer & entrance_bright-red (152GB)](https://drive.google.com/uc?id=1raqMa3Vtz_aogGjWzVAHW0MG-Av786Qm)
+    * [buildings_bright-red & buildings_duralumin (154GB)](https://drive.google.com/uc?id=1oWrilKNdMuZB7zM5b4WhcbdpXD-xEzXj)
+    * [laboratory_bright-red (81GB)](https://drive.google.com/uc?id=1Gb-qwUQUVBEsq-JK-FpAXLfO4_H9Jy4c)
+    * [court_bright-red (70GB)](https://drive.google.com/uc?id=1pAVDtJCep86ZEzgv-ry6RDOt-XXHxFn9)
+    * [buildings_white-primer & buildings_blue-metallic (158GB)](https://drive.google.com/uc?id=19b9BfZnWNCPl10gb1B4PHecY2d_xGy_p)
+    * [laboratory_duralumin (85GB)](https://drive.google.com/uc?id=1oWgdmUuqRAsfMo4zOVbU6ZlSTo76YBfc)
+    * [laboratory_blue-metallic (82GB)](https://drive.google.com/uc?id=1ARqUqaWYVol_NssWyMfRHfnNdQIpMoiE)
+    * [entrance_duralumin & entrance_blue-metallic (152GB)](https://drive.google.com/uc?id=1Zsf0mrbFHqVSgrrtN6mPNY-4eyXH2Wsp)
+    * [entrance_white-primer (78GB)](https://drive.google.com/uc?id=15AeANXlhQyGuKnBYFCp8IzRl6est5gJr)
+    * [laboratory_white-primer (84GB)](https://drive.google.com/uc?id=1W25iq5JO_XKRj6HDyKn4w1GVUUfyObEj)
+    * [manor_bright-red & manor_duralumin (175GB)](https://drive.google.com/uc?id=1BW5k8393XTa0o9rb9777Nc8OX0tHy6Ip)
+    * [manor_blue-metallic & manor_white-primer (185GB)](https://drive.google.com/uc?id=1AaJioKdFZ9egEa5edu0h0ylXPsIUK471)
+    * [chapel_bright-red & chapel_duralumin (158GB)](https://drive.google.com/uc?id=1EZAP9RnMKvtt9Qu852X6m-aHWn9tcBtS)
+    * [chapel_white-primer (89GB)](https://drive.google.com/uc?id=16euRh8XzOlCJIhE0rZdFS_4qfarFnUu6)
+    * [chapel_blue-metallic (85GB)](https://drive.google.com/uc?id=11WzKcxcblIaDj-KUSVHBxq3yb8LOgnAe)
 
 
 Our dataset is organized as follows.

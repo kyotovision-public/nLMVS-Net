@@ -82,7 +82,7 @@ We provide the raw and also preprocessed data.  As the raw data is so large, we 
 Our dataset is organized as follows.
 
 ### nLMVS-Synth (Training Set)
-The training set consists of .pt files (e.g., ```./00000000.pt```) which we can be load using torch.load() of PyTorch library. Each file contains:
+The training set consists of .pt files (e.g., ```./00000000.pt```) which we can load using torch.load() of PyTorch library. Each file contains:
 * Training data for shape-from-shading network
   * 'img': A HDR image of a object
   * 'rmap': A reflectance map (an image of a sphere whose material is the same as the object)

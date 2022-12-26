@@ -34,11 +34,13 @@ You can use `nlmvsnet.def` to build your singularity container by
 $ singularity build --fakeroot nlmvsnet.sif nlmvsnet.def
 ```
 
-Please prepare the following files.
+Also, please prepare the following files.
 * Download ```module.py``` of [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch/tree/e0f2ae3d7cb2dd13807b775f2075682eaa7f1521) and save it to ```./core```.
 * Download ```alum-bronze.pt``` from [MERL BRDF Database](https://www.merl.com/brdf/) and save it to ```./data```.
 * Download ```ibrdf.pt``` from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save it to ```./data```.
 * Download ```merl_appearance_ratio.pt``` and ```merl_mask.pt``` from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save them to ```./core/ibrdf/render```.
+
+We provide pretrained weights for our networks.
 * Download pretrained weight files from [here](https://drive.google.com/drive/folders/1IWr1KXGxYMEUIHxOobygxApA6_UTZYmD?usp=share_link) and save them to ```./weights/sfsnet``` and ```./weights/nlmvsnet```.
 
 ## nLMVS-Synth and nLMVS-Real datasets
@@ -80,7 +82,7 @@ We provide the raw and also preprocessed data.  As the raw data is so large, we 
 Our dataset is organized as follows.
 
 ### nLMVS-Synth (Training Set)
-The training set consists of .pt files (e.g., ```./00000000.pt```) which can be loaded using torch.load() of PyTorch library. Each file contains the following data:
+The training set consists of .pt files (e.g., ```./00000000.pt```) which we can be load using torch.load() of PyTorch library. Each file contains:
 * Training data for shape-from-shading network
   * 'img': A HDR image of a object
   * 'rmap': A reflectance map (an image of a sphere whose material is the same as the object)
@@ -106,17 +108,17 @@ Please see [nLMVS-Real.md](./nLMVS-Real.md).
 * Raw images can be found at ```./data/${illum_name}_${mat_name}/${shape_name}/raw```.
 * Raw panorama images can be found at ```./data/${illum_name}_${mat_name}/${shape_name}/theta_raw```.
 
-Although we do not provide any detailed documentation, there are also python scripts to preprocess the raw images and intermediate data created by the scripts (e.g., uncropped HDR images). ```./README.md``` briefly describes the usage of the python scripts.
+Although we do not provide detailed documentation, there are also python scripts and intermediate data (e.g., uncropped HDR images) for preprocessing the raw data. ```./README.md``` briefly describes the usage of the python scripts.
 
 ## Demo
-### Depth, Normal, and Reflectance Estimation
-You can recover depths, surface normals, and reflectance from images in the nLMVS-Synth dataset by runninng ```run_est_shape_mat_per_view_nlmvss.py```.
+### Depth, Normal, and Reflectance Estimation from 5 view images
+You can recover depths, surface normals, and reflectance from 5 view images in the nLMVS-Synth dataset by runninng ```run_est_shape_mat_per_view_nlmvss.py```.
 ```
 Usage: python run_est_shape_mat_per_view_nlmvss.py ${OBJECT_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
 Example: python run_est_shape_mat_per_view_nlmvss.py 00152 5 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval
 ```
 
-You can recover depths, surface normals, and reflectance from images in the nLMVS-Real Dataset by runninng ```run_est_shape_mat_per_view_nlmvsr.py```.
+You can recover depths, surface normals, and reflectance from 5 view images in the nLMVS-Real Dataset by runninng ```run_est_shape_mat_per_view_nlmvsr.py```.
 ```
 Usage: python run_est_shape_mat_per_view_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} ${VIEW_INDEX} --dataset-path ${PATH_TO_DATASET}
 Example: python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic horse 0 --dataset-path /data/nLMVS-Real/nlmvs-real
@@ -125,7 +127,7 @@ Example: python run_est_shape_mat_per_view_nlmvsr.py laboratory_blue-metallic ho
 Estimation results are saved to ```./run/est_shape_mat_per_view```.
 
 ### Whole 3D Shape Recovery 
-You can recover whole object 3D shape and reflectance from images in the nLMVS-Synth dataset by running ```run_est_shape_mat_nlmvss.py```.
+You can recover whole object 3D shape and reflectance from 10 (or 20) view images in the nLMVS-Synth dataset by running ```run_est_shape_mat_nlmvss.py```.
 ```
 Usage: python run_est_shape_mat_nlmvss.py ${OBJECT_NAME} --dataset-path ${PATH_TO_DATASET} --exp-name ${EXPERIMENT_NAME}
 Example: python run_est_shape_mat_nlmvss.py 00152 --dataset-path /data/nLMVS-Synth-Eval/nlmvs-synth-eval-10 --exp-name nlmvss10

@@ -175,6 +175,7 @@ python train_nlmvs.py --dataset-dir ${PATH_TO_DATASET}
 ## Acknowledgement
 This work was in part supported by JSPS 20H05951, 21H04893, JST JPMJCR20G7, JPMJSP2110, and RIKEN GRP. We also thank Shinsaku Hiura for his help in 3D printing.
 
+## Use of existing assets
 We used the following existing 3D mesh models, BRDF data, and environment maps to create the nLMVS-Synth and nLMVS-Real datasets.
 
 #### nLMVS-Synth (Training Set)

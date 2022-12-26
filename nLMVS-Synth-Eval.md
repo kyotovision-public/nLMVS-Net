@@ -52,6 +52,7 @@ The File Formats of pair.txt and ????????_cam.txt are the same as those of [MVSN
 ## Acknowledgement
 This work was in part supported by JSPS 20H05951, 21H04893, JST JPMJCR20G7, JPMJSP2110, and RIKEN GRP.
 
+## Use of existing assets
 We used the following 3D mesh models, BRDF data, and Light Probes to render images in this dataset. 
 - 3D mesh models
   - Armadillo model from [Stanford 3D Scanning Repository](http://graphics.stanford.edu/data/3Dscanrep/)

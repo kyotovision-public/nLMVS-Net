@@ -160,7 +160,7 @@ python run_recover_mesh_nlmvss.py ${OBJECT_NAME}
 python run_recover_mesh_nlmvsr.py ${ILLUMINATION_NAME}_${PAINT_NAME} ${SHAPE_NAME} --dataset-path ${PATH_TO_DATASET}
 ```
 
-### Training with the nLMVS-Synth dataset
+### Training from scratch
 You can train our shape-from-shading network with the nLMVS-Synth dataset by
 ```
 python train_sfs.py --dataset-dir ${PATH_TO_DATASET}

@@ -57,9 +57,9 @@ We provide the raw and also preprocessed data.  As the raw data is so large, we 
   * Training Set
     * [Training Data for Shape-from-Shading Network (6.6GB)](https://drive.google.com/uc?id=1E9Uk3RTYPnwsKNjkLsO_XoPzwpCsRWzN)
     * [Training Data for Cost Volume Filtering Network (22GB)](https://drive.google.com/uc?id=1hzTYRSgP5mqq6s3rXDpoxkBUgX1viAf3)
-  * [Test set (39GB)](https://drive.google.com/uc?id=12Mkcbe2JuJTrJRfKbXhg_buuQvbHM6FW)
+  * Test set (39GB) [Part1](https://drive.google.com/uc?id=1RP4MdBdH2IGoQ5JAYzAs_wdxacdnlsbX) [Part2](https://drive.google.com/uc?id=1u7mxh2oQWHmWOhwXw52nLgaSdfAZrUsc)
 * nLMVS-Real
-  * [Preprocessed data (48GB)](https://drive.google.com/uc?id=19uYwiQLaSKAA6XGnnmsHZ9if4JOAFmIk)
+  * Preprocessed data (48GB) [Part1](https://drive.google.com/uc?id=1mSTCYCyXmfwY3EEpJnN8lROcPocwMCWH) [Part2](https://drive.google.com/uc?id=1ZiTfg8nOb4PlsTw-WoXJ-Hqgmiu5u5ZM) [Part3](https://drive.google.com/uc?id=1rl6VzS0aQSl_k669RMH_SBJEgzdfhXwv)
   * Raw data
     * [court_duralumin & court_blue-metallic (159GB)](https://drive.google.com/uc?id=119IKcnoxvppk6wngybhH8KjCSNX_xjQg)
     * [court_white-primer & entrance_bright-red (152GB)](https://drive.google.com/uc?id=1raqMa3Vtz_aogGjWzVAHW0MG-Av786Qm)
